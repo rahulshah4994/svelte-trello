@@ -1,0 +1,17 @@
+.scrollbar {
+	$width: 0.5rem;
+	::-webkit-scrollbar {
+		width: $width;
+		&:hover {
+			$width: 0.75rem;
+		}
+	}
+	::-webkit-scrollbar-track {
+		background: $tertiary;
+		border-radius: 0.75rem;
+	}
+	::-webkit-scrollbar-thumb {
+		background: $secondary;
+		border-radius: 0.75rem;
+	}
+}

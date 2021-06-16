@@ -1,0 +1,24 @@
+$primary: #000000;
+$secondary: #d0dde9;
+$tertiary: #eeeeee;
+$error: #e11900;
+$error-light: #ffefed;
+$success: #05944f;
+$success-light: #e6f2ed;
+$warning: #bc8b2c;
+$warning-light: #ffefed;
+
+$color-map: (
+	'success': (
+		'default': $success,
+		'light': $success-light
+	),
+	'error': (
+		'default': $error,
+		'light': $error-light
+	),
+	'warning': (
+		'default': $warning,
+		'light': $warning-light
+	)
+);

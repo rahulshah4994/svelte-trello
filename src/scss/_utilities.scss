@@ -1,0 +1,73 @@
+@use "sass:math";
+
+//Padding and margin utilities
+$sides: 't', 'b', 'l', 'r', 'x', 'y', '';
+$properties: 'padding', 'margin';
+@each $side in $sides {
+	@each $property in $properties {
+		@for $i from 1 through 12 {
+			$class-prefix: 'm';
+			@if $property == 'padding' {
+				$class-prefix: 'p';
+			}
+			.#{$class-prefix}#{$side}-#{$i} {
+				@if $side == 't' {
+					#{$property}-top: $i * 4px;
+				}
+				@if $side == 'b' {
+					#{$property}-bottom: $i * 4px;
+				}
+				@if $side == 'l' {
+					#{$property}-left: $i * 4px;
+				}
+				@if $side == 'r' {
+					#{$property}-right: $i * 4px;
+				}
+				@if $side == 'x' {
+					#{$property}-left: $i * 4px;
+					#{$property}-right: $i * 4px;
+				}
+				@if $side == 'y' {
+					#{$property}-top: $i * 4px;
+					#{$property}-bottom: $i * 4px;
+				}
+				@if $side == '' {
+					#{$property}: $i * 4px;
+				}
+			}
+		}
+	}
+}
+
+//Width and height utilities
+$percentages: 100, 75, 50, 25, 0;
+@each $property in 'width', 'height' {
+	@each $perc in $percentages {
+		$prefix: 'w';
+		@if $property == 'height' {
+			$prefix: 'h';
+		}
+		.#{$prefix}-#{$perc} {
+			#{$property}: #{$perc}#{'%'};
+		}
+	}
+}
+
+//Font size utilities
+.text {
+	&-xs {
+		font-size: 0.5em;
+	}
+	&-sm {
+		font-size: 0.75em;
+	}
+	&-md {
+		font-size: 1em;
+	}
+	&-lg {
+		font-size: 1.25em;
+	}
+	&-xl {
+		font-size: 1.5em;
+	}
+}
