@@ -13,24 +13,36 @@
 
 	const handleMouseDown = (e) => {
 		let ele = e.currentTarget.cloneNode(true);
+		const { height, width } = e.currentTarget.getBoundingClientRect();
+
 		ele.setAttribute('id', 'moving-card');
 		ele.style.position = 'fixed';
 		ele.style.top = `${e.clientY - e.offsetY}px`;
 		ele.style.left = `${e.clientX - e.offsetX}px`;
-		ele.style.width = e.currentTarget.style.width;
+		ele.style.width = width;
 		ele.style.transform = 'rotateZ(-5deg)';
 		document.body.appendChild(ele);
 		e.currentTarget.style.opacity = 0;
+		e.currentTarget.style.margin = 0;
+		e.currentTarget.style.padding = 0;
 		e.currentTarget.style.height = 0;
-
 		movingCard.update({
 			offsetX: e.offsetX,
 			offsetY: e.offsetY,
 			ele,
 			isDragging: true,
-			height: ele.style.height,
+			width,
+			height,
 			listIndex,
 			cardIndex
+		});
+		const elem = e.currentTarget;
+		document.addEventListener('mouseup', () => {
+			console.log(e.currentTarget, elem, 'Mouseup');
+			elem.style.opacity = 1;
+			elem.style.margin = '1rem 0';
+			elem.style.padding = '1rem';
+			elem.style.height = 'auto';
 		});
 	};
 

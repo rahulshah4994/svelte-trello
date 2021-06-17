@@ -95,8 +95,8 @@
 			return accum;
 		}, Number.NEGATIVE_INFINITY);
 		placeholder.style.display = 'inline-block';
-		placeholder.style.height = $movingCard.height || '100px';
-		placeholder.style.width = $movingCard.width || '250px';
+		placeholder.style.height = $movingCard.height + 'px' || '100px';
+		placeholder.style.width = $movingCard.width + 'px' || '250px';
 		if (elementAfter) {
 			listEle.firstChild.insertBefore(placeholder, elementAfter);
 			movingCard.update({ targetListIndex: listIndex, targetCardIndex: cardIndex });

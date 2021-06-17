@@ -54,9 +54,10 @@ const boards = {
 	moveCard: (oldCardIndex, oldListIndex, newCardIndex, newListIndex) =>
 		boardsStore.update((lists) => {
 			const card = lists[oldListIndex].cards[oldCardIndex];
+			console.log(oldCardIndex, oldListIndex, newCardIndex, newListIndex);
 			if (oldListIndex === newListIndex) {
 				lists[oldListIndex].cards.splice(oldCardIndex, 1);
-				const newIndex = oldCardIndex > newCardIndex ? newCardIndex - 1 : newCardIndex;
+				const newIndex = oldCardIndex > newCardIndex ? newCardIndex : newCardIndex - 1;
 				lists[oldListIndex].cards.splice(newIndex, 0, card);
 				lists = lists;
 				return lists;
