@@ -1,6 +1,9 @@
 import { writable } from 'svelte/store';
 
-const boardsStore = writable([]);
+const boardsStore = writable([
+	{ title: 'Sample List 1', cards: [{ title: 'Sample Card 1' }, { title: 'Sample Card 2' }] },
+	{ title: 'Sample List 2', cards: [{ title: 'Sample Card 3' }, { title: 'Sample Card 4' }] }
+]);
 
 const boards = {
 	subscribe: boardsStore.subscribe,

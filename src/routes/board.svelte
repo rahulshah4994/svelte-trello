@@ -28,20 +28,10 @@
 		newListTitle = e.target.value;
 	};
 
-	const fetchData = async () => {
-		const response = await fetch('/api/board.json');
-		const res = await response.json();
-		boards.set(res);
-	};
-
 	$: console.log($boards);
 
 	const addList = async () => {
-		await fetch('/api/board.json', {
-			method: 'POST',
-			body: JSON.stringify({ title: newListTitle, cards: [] })
-		});
-		await fetchData();
+		boards.addList({ title: newListTitle, cards: [] });
 		newListTitle = '';
 	};
 
@@ -55,8 +45,7 @@
 		return output;
 	};
 
-	const moveCardToTarget = () => {
-		console.log($movingCard);
+	const moveCardToTarget = async () => {
 		if ($movingCard.targetCardIndex >= 0 && $movingCard.targetCardIndex >= 0) {
 			boards.moveCard(
 				$movingCard.cardIndex,
@@ -65,6 +54,7 @@
 				$movingCard.targetListIndex
 			);
 		}
+
 		movingCard.update({ isDragging: false });
 	};
 
@@ -104,11 +94,9 @@
 			listCoordinates[listIndex].ele.firstChild.appendChild(placeholder);
 			movingCard.update({ targetListIndex: listIndex, targetCardIndex: cardIndex });
 		}
-		// console.log('List: ', listIndex, 'Card: ', cardIndex, 'elementAfter: ', elementAfter);
 	};
 
 	onMount(() => {
-		fetchData();
 		document.addEventListener('mousemove', hoverCard);
 		document.addEventListener('mouseup', moveCardToTarget);
 		placeholder = document.createElement('div');

@@ -12,12 +12,16 @@
 
 	let newCardTitle = '';
 	const handleNewCardTitleChange = (e) => (newCardTitle = e.target.value);
-	const handleNewCardCreation = () => {
+
+	const handleNewCardCreation = async () => {
 		boards.addCard({ title: newCardTitle }, listIndex);
 		newCardTitle = '';
 	};
 
-	const handleTitleChange = (e) => boards.updateList({ title: e.detail }, listIndex);
+	const handleTitleChange = async (e) => {
+		newListTitle = '';
+		boards.updateList({ title: e.detail }, listIndex);
+	};
 
 </script>
 

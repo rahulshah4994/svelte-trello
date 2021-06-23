@@ -7,7 +7,7 @@
 		cardIndex,
 		listIndex;
 
-	const handleTitleChange = (e) => {
+	const handleTitleChange = async (e) => {
 		boards.updateCard({ title: e.detail }, cardIndex, listIndex);
 	};
 
