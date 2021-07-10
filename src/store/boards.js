@@ -25,10 +25,10 @@ const boards = {
 			return value;
 		}),
 	deleteList: (listIndex) =>
-		boardsStore.update((value) => {
-			value.splice(listIndex);
-			value = value;
-			return value;
+		boardsStore.update((lists) => {
+			lists.splice(listIndex, 1);
+			lists = lists;
+			return lists;
 		}),
 	addCard: (card, listIndex) =>
 		boardsStore.update((lists) => {

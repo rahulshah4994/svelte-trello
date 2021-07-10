@@ -119,7 +119,7 @@
 		<div class="board-canvas scrollbar">
 			<div class="board-flex-wrapper">
 				<div class="board-wrapper">
-					{#each $boards as list, i (list.title + i)}
+					{#each $boards as list, i (list.title)}
 						<List title={list.title} cards={list.cards} listIndex={i} />
 					{/each}
 					<form on:submit|preventDefault={addList}>

@@ -24,11 +24,25 @@
 		boards.updateList({ title: e.detail }, listIndex);
 	};
 
+	const deleteList = () => {
+		boards.deleteList(listIndex);
+	};
+
 </script>
 
-<div in:slide={{ delay: 50, duration: 500 }} class="list-container mx-2" name="list">
+<div
+	in:slide={{ delay: 50, duration: 500 }}
+	out:slide={{ duration: 250 }}
+	class="list-container mx-2"
+	name="list"
+>
 	<div class="scrollbar list ">
-		<h4><EditableText text={title} on:submit={handleTitleChange} /></h4>
+		<h4>
+			<EditableText text={title} on:submit={handleTitleChange} /><Button
+				on:click={deleteList}
+				className="sm">&times;</Button
+			>
+		</h4>
 		{#each cards as card, i (card.title)}
 			<Card title={card.title} cardIndex={i} {listIndex} />
 		{/each}
@@ -48,6 +62,12 @@
 </div>
 
 <style>
+	h4 {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
 	.list-container {
 		display: flex;
 		flex-direction: column;
