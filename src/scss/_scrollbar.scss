@@ -1,9 +1,9 @@
 .scrollbar {
-	$width: 0.5rem;
+	$width: 0.3rem;
 	::-webkit-scrollbar {
 		width: $width;
 		&:hover {
-			$width: 0.75rem;
+			$width: 0.6rem;
 		}
 	}
 	::-webkit-scrollbar-track {

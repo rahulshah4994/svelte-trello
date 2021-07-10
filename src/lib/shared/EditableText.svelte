@@ -8,7 +8,12 @@
 	const handleSubmit = (e) => {
 		isEditing = false;
 		dispatch('submit', text);
-		e.currentTarget.children[0]?.blur();
+		e.currentTarget.children[0].blur();
+	};
+
+	const handleFocus = (e) => {
+		e.stopPropagation();
+		isEditing = true;
 	};
 
 </script>
@@ -18,7 +23,8 @@
 		value={text}
 		class:isEditing
 		on:change={(e) => (text = e.target.value)}
-		on:focus={() => (isEditing = true)}
+		on:click={handleFocus}
+		on:focus={handleFocus}
 		on:blur={handleSubmit}
 	/>
 </form>

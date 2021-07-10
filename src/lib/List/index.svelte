@@ -4,6 +4,7 @@
 	import Input from '$lib/shared/Input.svelte';
 	import boards from '../../store/boards';
 	import Card from '$lib/Card/index.svelte';
+	import { slide } from 'svelte/transition';
 
 	export let title = '',
 		id = '',
@@ -25,7 +26,7 @@
 
 </script>
 
-<div class="list-container mx-2" name="list">
+<div in:slide={{ delay: 50, duration: 500 }} class="list-container mx-2" name="list">
 	<div class="scrollbar list ">
 		<h4><EditableText text={title} on:submit={handleTitleChange} /></h4>
 		{#each cards as card, i (card.title)}
@@ -35,7 +36,11 @@
 	<div>
 		<form on:submit|preventDefault={handleNewCardCreation}>
 			<div class="new-card spaced-row">
-				<Input on:keyup={handleNewCardTitleChange} value={newCardTitle} />
+				<Input
+					on:keyup={handleNewCardTitleChange}
+					value={newCardTitle}
+					placeholder="Enter card title"
+				/>
 				<Button type="submit" className="sm primary p-1">Add</Button>
 			</div>
 		</form>
