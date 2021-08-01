@@ -56,7 +56,7 @@
 		const dragStartDelay = setTimeout(() => {
 			startDrag();
 			document.removeEventListener('mouseup', cancelDragStart);
-		}, 200);
+		}, 100);
 	};
 
 </script>

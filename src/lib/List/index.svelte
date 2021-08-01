@@ -36,7 +36,7 @@
 	class="list-container mx-2"
 	name="list"
 >
-	<div class="scrollbar list ">
+	<div class="scrollbar list">
 		<h4>
 			<EditableText text={title} on:submit={handleTitleChange} /><Button
 				on:click={deleteList}
@@ -83,6 +83,7 @@
 
 	.list {
 		overflow-y: scroll;
+		overflow-x: hidden;
 	}
 
 </style>

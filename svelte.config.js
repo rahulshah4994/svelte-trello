@@ -1,4 +1,3 @@
-import { scss } from 'svelte-preprocess';
 import { sveltePreprocess } from 'svelte-preprocess/dist/autoProcess.js';
 
 /** @type {import('@sveltejs/kit').Config} */
