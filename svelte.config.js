@@ -1,4 +1,5 @@
 import { sveltePreprocess } from 'svelte-preprocess/dist/autoProcess.js';
+import vercel from '@sveltejs/adapter-vercel';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -10,7 +11,8 @@ const config = {
 		scss: {
 			prependData: `@import 'src/scss/variables.scss';`
 		}
-	})
+	}),
+	adapter: vercel()
 };
 
 export default config;
